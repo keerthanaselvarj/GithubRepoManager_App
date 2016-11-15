@@ -1,0 +1,16 @@
+version: "2"
+services:
+  weather-app:
+    build: .
+    image: weather-app
+    ports:
+      - 8080:8080
+    links:
+      - mongo
+    environment:
+      MONGO_URL: mongodb://mongo/weatherapp
+      PORT: 8080
+  mongo:
+    image: mongo
+    expose:
+      - 27017
